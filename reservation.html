@@ -80,18 +80,26 @@
     $("#add-btn").on("click", function(event) {
       event.preventDefault();
       var newReservation = {
-        name: $("#name").val("").trim(),
-        phone: $("#phone").val("").trim(),
-        email: $("#email").val("").trim(),
-        uniqueID: $("#uniqueId").val("").trim()
+        name: $("#name").val().trim(),
+        phone: $("#phone").val().trim(),
+        email: $("#email").val().trim(),
+        uniqueID: $("#uniqueId").val().trim()
       };
 
       // Question: What does this code do??
       $.post("/api/reservation", newReservation)
       .done(function(data) {
         console.log(data);
-        alert("You Table is Reserved!");
+    
       });
+
+         alert("You Table is Reserved!");
+
+        $("#name").val("");
+        $("#phone").val("");
+        $("#email").val("");
+        $("#uniqueId").val("");
+
     });
   </script>
 

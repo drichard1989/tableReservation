@@ -14,11 +14,37 @@ app.use(bodyParser.json({type: "application/vnd.api+json"}));
 
 
 var guestList = [];
-app.post("/api/reservation", function (req, res){
-  var newcharacter = req.body;
 
+var waitList = [];
+app.get("/", function (req, res){
+  res.sendFile(path.join(__dirname, "home.html"))
+})
+
+app.get("/table", function (req, res){
+  res.sendFile(path.join(__dirname, "table.html"))
+})
+
+app.get("/reservation", function (req, res){
   res.sendFile(path.join(__dirname, "reservation.html"))
 })
+
+app.get("/reservationapi", function (req, res){
+  res.json(guestList);
+})
+
+app.get("/waitlist", function (req, res){
+  res.json(waitList);
+})
+
+app.post("/api/reservation", function(req, res){
+  var newResevation = req.body;
+
+  if(guestList.length <= 4){
+    guestList.push(newResevation);
+    }else{
+      waitList.push(newResevation);
+    }
+});
 
 app.listen(PORT, function() {
   console.log("App listening on PORT: " + PORT);

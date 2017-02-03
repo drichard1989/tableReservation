@@ -36,6 +36,12 @@ app.get("/waitlist", function (req, res){
   res.json(waitList);
 })
 
+app.post("/table", function(req, res){
+  guestList=[];
+  waitList=[];
+  res.send("Success!")
+})
+
 app.post("/api/reservation", function(req, res){
   var newResevation = req.body;
 

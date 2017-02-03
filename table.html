@@ -21,8 +21,8 @@
 			<h2 class="text-center"> Current Reservations and Waiting List</h2>
 			<br>
 			<div class="text-center">
-				<a><button type="button" class="btn btn-lg btn-danger"><span class="glyphicon glyphicon-credit-card"></span> Make Reservation</button></a>
-				<a><button type="button" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-home"></span></button></a>
+				<a href="/reservation"><button type="button" class="btn btn-lg btn-danger"><span class="glyphicon glyphicon-credit-card"></span> Make Reservation</button></a>
+				<a href="/"><button type="button" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-home"></span></button></a>
 			</div>
 		</div>
 
@@ -48,7 +48,24 @@
 			</div>
 		</div>
 
+	<footer class="footer">
+      <div class="container">
+        <p>Control Panel</p>
+        <p><a href="#" id="clear">Clear Table</a> | <a href="/api/tables">API Table Link</a> | <a href="/api/waitlist">API Wait List</a> | <a href="https://github.com/drichard1989/tableReservation">GitHub Repo</a></p>
+      </div>
+    </footer>
+    
 	</div>
-
 </body>
+
+<script type="text/javascript">
+    $("#clear").on("click", function() {
+      alert("Clearing...");
+      clearTable();
+
+      location.reload();
+
+    });
+</script>
+
 </html>

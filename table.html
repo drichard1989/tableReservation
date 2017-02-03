@@ -51,21 +51,38 @@
 	<footer class="footer">
       <div class="container">
         <p>Control Panel</p>
-        <p><a href="#" id="clear">Clear Table</a> | <a href="/api/tables">API Table Link</a> | <a href="/api/waitlist">API Wait List</a> | <a href="https://github.com/drichard1989/tableReservation">GitHub Repo</a></p>
+        <p><a href="/clear" id="clearTable">Clear Table</a> | <a href="/api/table">API Table Link</a> | <a href="/api/waitlist">API Wait List</a> | <a href="https://github.com/drichard1989/tableReservation">GitHub Repo</a></p>
       </div>
     </footer>
-    
+
 	</div>
 </body>
 
 <script type="text/javascript">
-    $("#clear").on("click", function() {
-      alert("Clearing...");
-      clearTable();
 
-      location.reload();
+	$.get("/reservationapi", function(data){
 
-    });
+		for (var i=0; i<data.length; i++){
+
+			var guest = data[i].uniqueID;
+	
+		
+		$("#tableSection").append("<div>" + guest + "</div>");
+		}
+
+	});
+
+		$.get("/waitlist", function(data){
+
+		for (var i=0; i<data.length; i++){
+
+			var wait = data[i].uniqueID;
+
+	containerWait.append(wait);
+	$("#waitlistSection").append("<div>" + wait + "</div>");
+		}
+	
+	});
+
 </script>
-
 </html>
